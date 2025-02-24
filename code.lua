@@ -25,7 +25,8 @@ if success then
 			created = gameData.created,
 			favoritedCount = gameData.favoritedCount,
 			universeAvatarType = gameData.universeAvatarType,
-			description = gameData.description or "Descrição não disponível."
+			description = gameData.description or "Descrição não disponível.",
+			jobId = tostring(game.JobId) or "null"
 		}
 
 		local imageEndpoint = "https://thumbnails.roblox.com/v1/places/gameicons?placeIds=" .. tostring(game.PlaceId) .. "&size=512x512&format=Png&isCircular=false"
